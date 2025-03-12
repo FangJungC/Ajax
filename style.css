@@ -1,7 +1,13 @@
 
 #leftBtn,
 #rightBtn {
+    opacity: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#leftBtn:hover,
+#rightBtn:hover {
+opacity: 100%;
 }

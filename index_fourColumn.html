@@ -92,12 +92,18 @@
             $("#pokemonName").text(pokemon[currentIndex].name);
             $("#pokemonInfo").text("height: " + pokemon[currentIndex].height + ", weight: " + pokemon[currentIndex].weight);
 
+            for (var i = 0; i <= 4; i++) {
+                $(`#sprite${i}`).attr("src", pokemon[currentIndex+i].sprite);
+                $(`#pokemonName${i}`).text(pokemon[currentIndex+i].name);
+                $(`#pokemonInfo${i}`).text("height: " + pokemon[currentIndex+i].height + ", weight: " + pokemon[currentIndex+i].weight);
+            }
+
         }
         //更新商品圖html
         function getHtml(pokemonItem) {
             var html = `
             <div class="card col-lg-3">
-                <img id="sprite" src="${pokemonItem.sprite}" class="card-img-top" alt="...">
+                <img id="sprite${pokemonItem.id}" src="${pokemonItem.sprite}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 id="pokemonName" class="card-title">${pokemonItem.name}</h5>
                     <p id="pokemonInfo" class="card-text">${"height: " + pokemonItem.height + ", weight: " + pokemonItem.weight}</p>
@@ -134,8 +140,8 @@
             updatePokemon();
             var html = '';
 
-            for (var i = 0; i < 4; i++) {
-                html += getHtml(pokemon[i]);
+            for (var i = 0; i < 3; i++) {
+                html += getHtml(pokemon[i+1]);
             }
             $("#pool").append(html);
         }
